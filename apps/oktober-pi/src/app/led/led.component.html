@@ -1,0 +1,17 @@
+<p>led works!</p>
+
+<!-- Template Expression -->
+<p>Index: {{ led.index + 1 }}</p>
+
+<!-- Property Binding -->
+<div class="box" [style.backgroundColor]="led.color"></div>
+
+<!-- Directive -->
+<div class="box" [ngStyle]="{ 'background-color': led.color }"></div>
+
+
+<p>
+    Color: {{ led.color | rolaColor: 'hex' }}
+</p>
+
+<pre><code>{{ led | json }}</code></pre>
