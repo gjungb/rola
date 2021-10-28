@@ -4,7 +4,7 @@
 <p>Index: {{ led.index + 1 }}</p>
 
 <!-- Property Binding -->
-<div class="box" [style.backgroundColor]="led.color"></div>
+<div class="box" (click)="handleClick($event)" [style.backgroundColor]="led.color"></div>
 
 <!-- Directive -->
 <div class="box" [ngStyle]="{ 'background-color': led.color }"></div>

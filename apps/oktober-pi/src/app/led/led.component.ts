@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Led } from '../model/led';
 
 @Component({
@@ -7,7 +7,6 @@ import { Led } from '../model/led';
   styleUrls: ['./led.component.scss'],
 })
 export class LedComponent implements OnInit {
-
   @Input('rolaLed')
   led: Led = {
     index: 0,
@@ -19,9 +18,17 @@ export class LedComponent implements OnInit {
     console.log(value);
   }
 
+  @Output('rolaLedAction')
+  action$ = new EventEmitter<number>();
+
   constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
+  handleClick(ev: MouseEvent): void {
+    console.log('clicked', ev.ctrlKey);
+    if (ev.ctrlKey) {
+      this.action$.emit(this.led.index);
+    }
   }
 }
