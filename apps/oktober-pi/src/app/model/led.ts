@@ -22,4 +22,4 @@ export interface Led {
  *
  * @see {Led}
  */
-export type Leds = ReadonlyArray<Led>;
+export type Leds = Array<Led>;

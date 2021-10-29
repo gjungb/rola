@@ -1,0 +1,8 @@
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+  <input type="text" [formControl]="colorInput" />
+  <button type="submit">Update</button>
+</form>
+
+<ng-container *ngIf="leds$ | async as leds">
+  <p>We have {{ leds.length }} Leds.</p>
+</ng-container>

@@ -1,8 +1,4 @@
-<p>led-list works!</p>
-
-<p>
-  Tick: {{ tick$ | async }}
-</p>
+<p>Tick: {{ tick$ | async }}</p>
 
 <!-- Emmet Abbr. -->
 
@@ -10,12 +6,16 @@
   <tbody>
     <tr>
       <td class="foo" *ngFor="let thing of leds">
-        <rola-led (rolaLedAction)="handleLedAction($event)" [rolaLed]="thing" [rolaFoo]="thing.color"></rola-led>
+        <button (click)="handleLedAction(thing.index)">Refresh</button>
+        <a [routerLink]="['/leds', thing.index]">Details</a>
+        <rola-led
+          (rolaLedAction)="handleLedAction($event)"
+          [rolaLed]="thing"
+          [rolaFoo]="thing.color"
+        ></rola-led>
       </td>
     </tr>
   </tbody>
 </table>
 
-<p>
-  Tick: {{ tick$ | async }}
-</p>
+<p>Tick: {{ tick$ | async }}</p>

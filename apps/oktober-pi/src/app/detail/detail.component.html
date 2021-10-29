@@ -1,0 +1,7 @@
+<ng-container *ngIf="led$ | async as led; else loader">
+  <rola-led [rolaLed]="led"></rola-led>
+</ng-container>
+
+<ng-template #loader>
+    <p>Bin am Laden...</p>
+</ng-template>

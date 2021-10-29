@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject, Subscription, timer } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Leds } from '../model/led';
 import { LedService } from '../shared/led.service';
 
@@ -8,7 +8,6 @@ import { LedService } from '../shared/led.service';
   selector: 'rola-led-list',
   templateUrl: './led-list.component.html',
   styleUrls: ['./led-list.component.css'],
-  providers: [LedService],
 })
 export class LedListComponent implements OnInit, OnDestroy {
   leds?: Leds;
@@ -24,7 +23,24 @@ export class LedListComponent implements OnInit, OnDestroy {
   constructor(private readonly service: LedService) {}
 
   handleLedAction(index: number): void {
-    console.log(index);
+    this.service
+      .updateLed(index)
+      .pipe(tap((led) => console.log(led)))
+      .subscribe((led) => {
+        this.leds && (this.leds[index] = led);
+      });
+  }
+
+  /**
+   * TODO docs
+   */
+  loadLeds(): void {
+    this.service
+      .readLeds()
+      .pipe(tap((res) => console.log(res)))
+      .subscribe((res) => {
+        this.leds = res;
+      });
   }
 
   ngOnInit(): void {
@@ -36,14 +52,7 @@ export class LedListComponent implements OnInit, OnDestroy {
     //   next: (value) => (this.tick = value),
     // });
 
-    this.service
-      .readLeds()
-      .pipe(tap((res) => console.log(res)))
-      .subscribe((res) => {
-        this.leds = res;
-      });
-
-    console.log(this.leds);
+    this.loadLeds();
   }
 
   ngOnDestroy(): void {

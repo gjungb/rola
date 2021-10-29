@@ -1,12 +1,15 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+/* eslint-disable @angular-eslint/no-output-rename */
+/* eslint-disable @angular-eslint/no-input-rename */
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Led } from '../model/led';
 
 @Component({
   selector: 'rola-led',
   templateUrl: './led.component.html',
   styleUrls: ['./led.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LedComponent implements OnInit {
+export class LedComponent {
   @Input('rolaLed')
   led: Led = {
     index: 0,
@@ -20,10 +23,6 @@ export class LedComponent implements OnInit {
 
   @Output('rolaLedAction')
   action$ = new EventEmitter<number>();
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   handleClick(ev: MouseEvent): void {
     console.log('clicked', ev.ctrlKey);
