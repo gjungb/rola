@@ -16,6 +16,8 @@ import { LedService } from '../shared/led.service';
   styleUrls: ['./color-form.component.css'],
 })
 export class ColorFormComponent implements OnInit {
+  color = 'blue';
+
   form: FormGroup = new FormGroup({});
 
   colorInput!: FormControl;
@@ -26,6 +28,10 @@ export class ColorFormComponent implements OnInit {
     private readonly fb: FormBuilder,
     private readonly service: LedService
   ) {}
+
+  bigColor(value: string): void {
+    this.color = value.toUpperCase();
+  }
 
   ngOnInit(): void {
     // this.form = this.fb.group({

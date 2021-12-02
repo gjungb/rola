@@ -1,6 +1,71 @@
 {
   "version": 1,
   "projects": {
+    "led": {
+      "projectType": "library",
+      "root": "libs/led",
+      "sourceRoot": "libs/led/src",
+      "prefix": "gerd",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/angular:package",
+          "outputs": ["dist/libs/led"],
+          "options": {
+            "project": "libs/led/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "libs/led/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "libs/led/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/led"],
+          "options": {
+            "jestConfig": "libs/led/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/led/src/**/*.ts",
+              "libs/led/src/**/*.html"
+            ]
+          }
+        }
+      },
+      "tags": []
+    },
+    "nixda": {
+      "root": "libs/nixda",
+      "sourceRoot": "libs/nixda/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/nixda/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/nixda"],
+          "options": {
+            "jestConfig": "libs/nixda/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "oktober-pi": {
       "projectType": "application",
       "root": "apps/oktober-pi",
@@ -123,6 +188,39 @@
       },
       "tags": [],
       "implicitDependencies": ["oktober-pi"]
+    },
+    "security": {
+      "root": "libs/security",
+      "sourceRoot": "libs/security/src",
+      "projectType": "library",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/workspace:tsc",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/libs/security",
+            "main": "libs/security/src/index.ts",
+            "tsConfig": "libs/security/tsconfig.lib.json",
+            "assets": ["libs/security/*.md"]
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/security/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/security"],
+          "options": {
+            "jestConfig": "libs/security/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
     }
   }
 }
