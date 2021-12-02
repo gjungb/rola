@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BarChartModule, LedModule } from '@rola/led';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import { ColorFormComponent } from './color-form/color-form.component';
@@ -28,7 +29,9 @@ import { RolaColorPipe } from './shared/rola-color.pipe';
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    LedModule,
+    BarChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
