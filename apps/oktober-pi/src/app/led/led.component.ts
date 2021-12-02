@@ -1,13 +1,15 @@
 /* eslint-disable @angular-eslint/no-output-rename */
 /* eslint-disable @angular-eslint/no-input-rename */
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { Led } from '../model/led';
 
 @Component({
   selector: 'rola-led',
   templateUrl: './led.component.html',
   styleUrls: ['./led.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  // @link {https://angular.io/guide/view-encapsulation}
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class LedComponent {
   @Input('rolaLed')

@@ -7,7 +7,7 @@ import { LedService } from '../shared/led.service';
 @Component({
   selector: 'rola-led-list',
   templateUrl: './led-list.component.html',
-  styleUrls: ['./led-list.component.css'],
+  styleUrls: ['./led-list.component.css']
 })
 export class LedListComponent implements OnInit, OnDestroy {
   leds?: Leds;
