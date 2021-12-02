@@ -11,7 +11,7 @@
     <tr>
       <td class="foo" *ngFor="let thing of leds">
         <button (click)="handleLedAction(thing.index)">Refresh</button>
-        <a [routerLink]="['/leds', thing.index]">Details</a>
+        <a [routerLink]="['/lazy', thing.index]">Details</a>
         <rola-led
           (rolaLedAction)="handleLedAction($event)"
           [rolaLed]="thing"
