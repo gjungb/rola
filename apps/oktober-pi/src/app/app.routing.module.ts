@@ -22,6 +22,11 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: 'lazy',
+    loadChildren: () => import('./lazy/lazy.module').then(mod => mod.LazyModule),
+    canLoad: []
+  }
 ];
 
 @NgModule({
