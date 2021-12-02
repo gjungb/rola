@@ -3,6 +3,15 @@
   <button type="submit">Update</button>
 </form>
 
+<form>
+  <!-- https://angular.io/guide/two-way-binding -->
+  <!-- https://angular.io/api/forms/ControlValueAccessor#controlvalueaccessor -->
+  <input type="text" [ngModel]="color" (ngModelChange)="bigColor($event)" name="color1" />
+  <input type="text" [(ngModel)]="color" name="color2" />
+</form>
+
+<pre><code>{{ color }}</code></pre>
+
 <ng-container *ngIf="leds$ | async as leds">
   <p>We have {{ leds.length }} Leds.</p>
 </ng-container>

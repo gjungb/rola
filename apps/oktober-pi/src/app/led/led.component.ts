@@ -18,6 +18,9 @@ export class LedComponent {
     color: 'goldenrod',
   };
 
+  @Output('rolaLedChange')
+  ledChange = new EventEmitter<Led>();
+
   @Input('rolaFoo')
   set foo(value: string) {
     console.log(value);
@@ -31,5 +34,17 @@ export class LedComponent {
     if (ev.ctrlKey) {
       this.action$.emit(this.led.index);
     }
+
+    /**
+     * @link {https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax}
+     * @link {https://immerjs.github.io/immer/produce}
+     */
+    this.ledChange.emit(
+      // Object.assign({}, this.led)
+      {
+        ...this.led,
+        color: 'lightblue'
+      }
+    );
   }
 }
