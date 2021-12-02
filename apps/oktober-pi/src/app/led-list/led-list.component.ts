@@ -18,7 +18,7 @@ export class LedListComponent implements OnInit, OnDestroy {
 
   private sub?: Subscription;
 
-  private destroy$ = new Subject();
+  private destroy$ = new Subject<void>();
 
   constructor(private readonly service: LedService) {}
 
