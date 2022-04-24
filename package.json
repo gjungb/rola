@@ -51,7 +51,7 @@
     "eslint-plugin-cypress": "2.12.1",
     "jest": "27.4.3",
     "jest-preset-angular": "11.0.1",
-    "ng-packagr": "13.0.8",
+    "ng-packagr": "13.3.1",
     "postcss": "8.4.4",
     "postcss-import": "14.0.2",
     "postcss-preset-env": "7.0.1",
